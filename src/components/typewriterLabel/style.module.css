@@ -1,0 +1,9 @@
+.typeWriterHooha{
+    color: var(--color-lavender);
+}
+.heading{
+    margin-top: 5%;
+    margin-bottom: 10%;
+    font-size: var(--fontsize-pearl);
+    color: var(--background-color-jade);
+}

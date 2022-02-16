@@ -1,0 +1,26 @@
+.container{
+    background-color: var(--color-white);
+    align-self: center;
+    display: flex;
+    height:100vh;
+    /* box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); */
+}
+
+.descriptionSection{
+    width: 50%;
+    word-wrap: break-word;
+    display: flex;
+    flex-direction: column;   
+    background-repeat: no-repeat;
+    background-color: #ffffff;
+    background-position: center;
+    background-size:80%;
+    background-image: url("../../assets/images/product_management.png");
+}
+
+.descriptionSectionHeader{
+    margin-left: 10%;
+    font-size: var(--fontsize-pearl);
+    margin-top: 5%;
+    color: var(--color-lavender);
+}

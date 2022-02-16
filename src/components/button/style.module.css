@@ -1,0 +1,28 @@
+.button{
+    display: flex;
+    width: 50%;
+    margin:1rem 5rem;
+    padding:.9rem 2rem;   
+    outline:none;
+    border:none;
+    font-size: var(--fontsize-brittle);
+    box-shadow: 1px 5px 15px rgba(0, 0, 0, 0.1);
+    border-radius:5rem;
+    cursor: pointer;
+}
+
+.button .icon{
+    left: 0;
+}
+
+.button .label{
+    display: flex;
+    flex: 90%;
+    justify-content: center;
+}
+
+.button:active{
+    background-color: var(--primary-color);
+    opacity: 0.8;
+    transition: background 2s;
+}

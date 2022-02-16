@@ -1,0 +1,10 @@
+.moveToLogin{
+    margin-top: 4%;
+    font-size: var(--fontsize-brittle);
+    align-self:flex-end;
+    margin-right:10% ;
+}
+.navigateTo{
+    color: var(--color-lavender);
+    text-decoration: none;
+}

@@ -1,0 +1,23 @@
+.signupSection{
+    display: flex;
+    width:50%;
+    flex-direction: column;
+    animation: fadeIn 1s;
+    -webkit-animation: fadeIn 1s;
+    -moz-animation: fadeIn 1s;
+    -ms-animatio:fadeIn 1s
+}
+
+@keyframes fadeIn {
+    0%{
+        opacity: 0;
+    }100%{
+        opacity: 1;
+    }
+}
+
+.signupSectionBody{
+    margin-top: 5%;
+    margin-bottom: 0%;
+    font-size: var(--fontsize-brittle);
+}
