@@ -10,10 +10,10 @@ import onboardingStyles from "./style.module.css";
 const Onboarding = () => {
     
     const location=useLocation();
-
+    const isAuth=false
     return (
-        location.pathname===Routes.HOMEROUTE?
-        <ProtectedRoute exact path={Routes.HOMEROUTE}><HomeScreen/></ProtectedRoute>:
+        location.pathname===Routes.HOMEROUTE ?
+        <ProtectedRoute path={Routes.HOMEROUTE} component={HomeScreen} isAuth={true}/>:
         <div className={onboardingStyles.container}>
             <div className={onboardingStyles.descriptionSection}>
                 <p className={onboardingStyles.descriptionSectionHeader}>

@@ -2,6 +2,7 @@ import {
     BrowserRouter as Router,
     Switch,
     Route,
+    withRouter
 
 } from "react-router-dom";
 import Navbar from "../../components/navbar/navbar";
@@ -20,4 +21,4 @@ const HomeScreen = () => {
 
     );
 }
-export default HomeScreen;
+export default withRouter(HomeScreen);
