@@ -26,6 +26,16 @@ const useForm = (initialFormValues) => {
 
     const switchValidator=(name,value,tempError)=>{
         switch(name){
+            case "name":
+                {
+                    let a=ValidateInput.required(value);
+                    let b=ValidateInput.name(value);
+                    if(a.errorMsg)
+                        tempError["name"]=a.errorMsg;
+                    else
+                        tempError["name"]=b.errorMsg;
+                    break;
+                }
             case "username":
                 {
                     let a=ValidateInput.required(value);
@@ -34,6 +44,16 @@ const useForm = (initialFormValues) => {
                         tempError["username"]=a.errorMsg;
                     else
                         tempError["username"]=b.errorMsg;
+                    break;
+                }
+                case "contact":
+                {
+                    let a=ValidateInput.required(value);
+                    let b=ValidateInput.contact(value);
+                    if(a.errorMsg)
+                        tempError["contact"]=a.errorMsg;
+                    else
+                        tempError["contact"]=b.errorMsg;
                     break;
                 }
             case "email":

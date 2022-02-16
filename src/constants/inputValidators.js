@@ -1,7 +1,33 @@
-import { EmailRegEx, PasswordRegEx, UsernameRegEx } from "./application";
+import { ContactRegEx, EmailRegEx, NameRegEx, PasswordRegEx, UsernameRegEx } from "./application";
 
 export class  ValidateInput{
     
+    static name(value){
+        if(!new RegExp(NameRegEx.length).test(value)){
+            return{
+                "isError":true,
+                "errorMsg":"Length should be greater than 1."   
+            }
+        }else{
+            return{
+                "isError":false,
+                "errorMsg":""   
+            }
+        }
+    }
+    static contact(value){
+        if(!new RegExp(ContactRegEx.length).test(value)){
+            return{
+                "isError":true,
+                "errorMsg":"Length should be equal to 10."   
+            }
+        }else{
+            return{
+                "isError":false,
+                "errorMsg":""   
+            }
+        }
+    }
     static email(value){
         if(!new RegExp(EmailRegEx.email).test(value)){
             return{

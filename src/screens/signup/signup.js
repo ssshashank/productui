@@ -20,8 +20,10 @@ const SignupScreen = () => {
     const [togglePasswordVisibility,onTogglePassword]=useIconToggle();  
 
     const userSignupInfo = useRef({
+        "name":"",
         "username":"",
         "email":"",
+        "contact":"",
         "password":""
     })
     
@@ -34,6 +36,15 @@ const SignupScreen = () => {
                     <div className={signupStyles.signupSectionBody}>
                     <TypewriterLabel label="Sign up with "/>
                         <form onSubmit={onSubmitHandler}>
+                        <InputField 
+                            type="text" 
+                            name="name"   
+                            value={formValues["name"]} 
+                            placeholder="name"
+                            onChangeHandler={inputChangeHandler}
+                            validators={[ValidateInput.required,ValidateInput.username]}
+                            errorMsg={error["username"]}
+                        />  
                         <InputField 
                             type="text" 
                             name="username"   
@@ -53,6 +64,15 @@ const SignupScreen = () => {
                                 validators={[ValidateInput.required,ValidateInput.email]}
                                 errorMsg={error["email"]}
                         />
+                        <InputField 
+                            type="text" 
+                            name="contact"   
+                            value={formValues["contact"]} 
+                            placeholder="contact"
+                            onChangeHandler={inputChangeHandler}
+                            validators={[ValidateInput.required,ValidateInput.username]}
+                            errorMsg={error["username"]}
+                        />  
 
                         <InputField 
                             type={togglePasswordVisibility?"password":"text"} 

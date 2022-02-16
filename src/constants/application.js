@@ -5,6 +5,12 @@ export class AccountStatus{
     static disabled=2;
 }
 
+export const NameRegEx={
+    length:"(?=.{1,50})"
+}
+export const ContactRegEx={
+    length:"(?=.{10,10})"
+}
 export const PasswordRegEx={
     digit:"(?=.*[0-9])",
     lowercaseLetter:"(?=.*[a-z])",
