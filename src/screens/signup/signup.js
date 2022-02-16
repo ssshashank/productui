@@ -18,8 +18,6 @@ import { userLocalData } from '../../utils/userUtils';
 const SignupScreen = () => {
     
     const history=useHistory();
- 
-    
 
     const [togglePasswordVisibility,onTogglePassword]=useIconToggle();  
 
@@ -43,21 +41,25 @@ const SignupScreen = () => {
                 "password":formValues.password
             }
             let response=await userAPI.signup(signupData)
-            response=response.data.data
-            let user=new UserModel({
-                "userId":response._id,
-                "userName":response.userName,
-                "email":response.email,
-                "name":response.name,
-                "contact":response.contact,
-                "currentStatus":AccountStatus.active,
-                "token":response.token
-            })
-            userLocalData.setLocal({
-                "key":"USER",
-                "value":JSON.stringify(user)
-            })
-            navigateToHome()
+            response=response.data
+            if(response.message===200){
+                let user=new UserModel({
+                    "userId":response._id,
+                    "userName":response.userName,
+                    "email":response.email,
+                    "name":response.name,
+                    "contact":response.contact,
+                    "currentStatus":AccountStatus.active,
+                    "token":response.token
+                })
+                userLocalData.setLocal({
+                    "key":"USER",
+                    "value":JSON.stringify(user)
+                })
+                navigateToHome()
+            }else if (response.message===404){
+                alert(response.data)
+            }
             
         }
     }

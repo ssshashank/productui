@@ -36,26 +36,32 @@ const LoginScreen = () => {
                 "password":formValues.password
             }
             let response=await userAPI.login(loginData)
-            response=response.data.data
-            let user=new UserModel({
-                "userId":response._id,
-                "userName":response.userName,
-                "email":response.email,
-                "name":response.name,
-                "contact":response.contact,
-                "currentStatus":AccountStatus.active,
-                "token":response.token
-            })
-            userLocalData.setLocal({
-                "key":"USER",
-                "value":JSON.stringify(user)
-            })
-            navigateToHome()
+            response=response.data
+            if(response.message===200){
+                let user=new UserModel({
+                    "userId":response._id,
+                    "userName":response.userName,
+                    "email":response.email,
+                    "name":response.name,
+                    "contact":response.contact,
+                    "currentStatus":AccountStatus.active,
+                    "token":response.token
+                })
+                userLocalData.setLocal({
+                    "key":"USER",
+                    "value":JSON.stringify(user)
+                })
+                navigateToHome()
+            }else if (response.message===404){
+                alert(response.data)
+               
+            }
+            
         }
     }
 
     const navigateToHome = () => {
-        history.replace(Routes.HOMEROUTE)
+        history.push(Routes.HOMEROUTE)
     }
     return (
         <div className={loginStyles.signupSection}>

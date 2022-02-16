@@ -1,0 +1,28 @@
+.navbarContainer{
+    width: 100%;
+}
+.navbarTitle{
+    color: var(--color-lavender);
+}
+.navbarBody{
+    width: 80%;
+    margin:0 auto;
+    justify-content: space-between;
+    display: flex;
+}
+.navbarList{
+    display:flex;
+    flex-direction: row;
+    gap: 5%;
+}
+.navbarListItem{
+    font-weight: 400;
+    color: var(--background-color-jade);
+}
+.navbarListItem:hover{
+    text-decoration: underline;
+    cursor: pointer;
+    font-weight: 600;
+    color: var(--color-lavender);
+    transition: all 0.5ms ease-in-out;
+}

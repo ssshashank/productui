@@ -8,7 +8,8 @@ export const userAPI={
             let response=await axios.post(NETWORK_URL,data)
             return response;
         } catch (error) {
-            console.error("Expectation at userAPI login ❌ :: ", error);
+            // console.log("Expectation at userAPI login ❌ :: ");
+            return error.response
         }
     },
     signup:async function(data){
@@ -17,7 +18,8 @@ export const userAPI={
             let response = await axios.post(NETWORK_URL, data)
             return response;
         } catch (error) {
-            console.error("Expectation at userAPI login ❌ :: ", error);
+            // console.error("Expectation at userAPI login ❌ :: ", error);
+            return error.response
         }
     },
     logout:async function(){

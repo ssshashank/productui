@@ -2,15 +2,22 @@ import {
     BrowserRouter as Router,
     Switch,
     Route,
-    
+
 } from "react-router-dom";
+import Navbar from "../../components/navbar/navbar";
+import homeStyles from "./style.module.css";
 
 
+const HomeScreen = () => {
 
-const HomeScreen=()=>{
-    
     return (
-        <h1> Home </h1>
+        <div>
+            <Navbar />
+            <div class={homeStyles.home} >
+                <h1>Manage your product</h1>
+            </div>
+        </div>
+
     );
 }
 export default HomeScreen;

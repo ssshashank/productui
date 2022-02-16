@@ -1,0 +1,13 @@
+.home{
+    text-align: center;
+    background: -webkit-linear-gradient(rgb(7, 228, 125), rgb(5, 98, 160));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-top: 10%;
+    width: 50%;
+    margin-right: auto;
+    margin-left: auto;
+    font-size: 4rem;
+    font-weight: 800;
+}
