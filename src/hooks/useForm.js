@@ -18,7 +18,6 @@ const useForm = (initialFormValues) => {
                 switchValidator(key,value,tempError) 
                 })
             }if(flag===0){
-            
                 switchValidator(name,value,tempError)
             }
             setError(tempError)
@@ -34,6 +33,7 @@ const useForm = (initialFormValues) => {
                         tempError["name"]=a.errorMsg;
                     else
                         tempError["name"]=b.errorMsg;
+                    
                     break;
                 }
             case "username":
@@ -44,6 +44,7 @@ const useForm = (initialFormValues) => {
                         tempError["username"]=a.errorMsg;
                     else
                         tempError["username"]=b.errorMsg;
+                    setError(tempError)   
                     break;
                 }
                 case "contact":
@@ -83,12 +84,14 @@ const useForm = (initialFormValues) => {
     }
     
     const inputChangeHandler=(e)=>{
+       
         setFormValues({...formValues,[e.target.name]:e.target.value});
         validateInputHandler(0,e.target.name,e.target.value)
     }
     
-    const onSubmitHandler=()=>{
-        validateInputHandler(1);
+    const onSubmitHandler=(e)=>{
+       
+        validateInputHandler(1)
     };
     
     

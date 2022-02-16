@@ -47,7 +47,7 @@ export class  ValidateInput{
         if(!new RegExp(UsernameRegEx.length).test(value)){
             return{
                 "isError":true,
-                "errorMsg":"Length should be greater than 7."   
+                "errorMsg":"Length should be greater than 1."   
             }
         }
         else{

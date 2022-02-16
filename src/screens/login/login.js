@@ -10,7 +10,10 @@ import ToggleOnboard from '../../components/toggleOnboard/toggleOnboard';
 import TypewriterLabel from '../../components/typewriterLabel/typewriterLabel';
 import InputField from '../../components/inputField/inputField';
 import { ValidateInput } from '../../constants/inputValidators';
-import { Route } from 'react-router-dom';
+import { userAPI } from '../../apis/userAPI';
+import UserModel from '../../models/user';
+import { AccountStatus } from '../../constants/application';
+import { userLocalData } from '../../utils/userUtils';
 
 
 const LoginScreen = () => {
@@ -24,9 +27,35 @@ const LoginScreen = () => {
     })
 
     const { inputChangeHandler, formValues, error, onSubmitHandler } = useForm(userLoginInfo.current);
+    
+    const onSubmit=async ()=>{
+        onSubmitHandler()
+        if(formValues.username && formValues.password && !error.username && !error.password ){
+            let loginData={
+                "username":formValues.username,
+                "password":formValues.password
+            }
+            let response=await userAPI.login(loginData)
+            response=response.data.data
+            let user=new UserModel({
+                "userId":response._id,
+                "userName":response.userName,
+                "email":response.email,
+                "name":response.name,
+                "contact":response.contact,
+                "currentStatus":AccountStatus.active,
+                "token":response.token
+            })
+            userLocalData.setLocal({
+                "key":"USER",
+                "value":JSON.stringify(user)
+            })
+            navigateToHome()
+        }
+    }
 
     const navigateToHome = () => {
-        history.push(Routes.HOMEROUTE)
+        history.replace(Routes.HOMEROUTE)
     }
     return (
         <div className={loginStyles.signupSection}>
@@ -60,10 +89,8 @@ const LoginScreen = () => {
                         backgroundColor={`var(--color-lavender)`}
                         textColor={`var(--text-color-purity)`}
                         label="Get Started"
-                        onClickHandler={onSubmitHandler}
+                        onClickHandler={onSubmit}
                     />
-
-
                 </div>
             </center>
         </div>

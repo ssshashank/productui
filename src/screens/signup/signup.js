@@ -10,13 +10,17 @@ import useIconToggle from '../../hooks/useIconToggle';
 import { PasswordIconAiFillEye, PasswordIconAiFillEyeInvisible } from '../../utils/utilsIcon';
 import { ValidateInput } from '../../constants/inputValidators';
 import useForm from '../../hooks/useForm';
+import { userAPI } from '../../apis/userAPI';
+import UserModel from '../../models/user';
+import { AccountStatus } from '../../constants/application';
+import { userLocalData } from '../../utils/userUtils';
 
 const SignupScreen = () => {
     
     const history=useHistory();
-    const navigateToOTP=()=>history.push(Routes.OTPVERIFICATION);
+ 
     
-   
+
     const [togglePasswordVisibility,onTogglePassword]=useIconToggle();  
 
     const userSignupInfo = useRef({
@@ -28,7 +32,38 @@ const SignupScreen = () => {
     })
     
     const {inputChangeHandler,formValues,error,onSubmitHandler}=useForm(userSignupInfo.current);
-    
+    const onSubmit=async ()=>{
+        onSubmitHandler()
+        if(formValues.username && formValues.password && !error.username && !error.password ){
+            let signupData={
+                "name":formValues.name,
+                "username":formValues.username,
+                "email":formValues.email,
+                "contact":formValues.contact,
+                "password":formValues.password
+            }
+            let response=await userAPI.signup(signupData)
+            response=response.data.data
+            let user=new UserModel({
+                "userId":response._id,
+                "userName":response.userName,
+                "email":response.email,
+                "name":response.name,
+                "contact":response.contact,
+                "currentStatus":AccountStatus.active,
+                "token":response.token
+            })
+            userLocalData.setLocal({
+                "key":"USER",
+                "value":JSON.stringify(user)
+            })
+            navigateToHome()
+            
+        }
+    }
+    const navigateToHome = () => {
+        history.replace(Routes.HOMEROUTE)
+    }
     return (
         <div className={signupStyles.signupSection}>
                 <ToggleOnboard label="Already a member? " linkLabel="Login" link={Routes.LOGINROUTE}/>
@@ -92,8 +127,8 @@ const SignupScreen = () => {
                         <Button
                             backgroundColor={`var(--color-lavender)`}
                             textColor={`var(--text-color-purity)`}
-                            label="Get Set Hoo-Ha" 
-                            onClickHandler={onSubmitHandler}
+                            label="Signup" 
+                            onClickHandler={onSubmit}
                         />  
                         
                         </form>                  

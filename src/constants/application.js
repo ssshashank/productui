@@ -24,5 +24,5 @@ export const EmailRegEx={
 }
 
 export const UsernameRegEx={
-    length:"(?=.{8,15})"
+    length:"(?=.{1,15})"
 }
