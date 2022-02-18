@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+import Routes from "../../constants/routes";
 import { getNavbarList } from "../../models/navbar"
 import navbarStyles from "./style.module.css";
 const Navbar = () => {
@@ -6,7 +8,7 @@ const Navbar = () => {
         <div className={navbarStyles.navbarContainer} >
             <div className={navbarStyles.navbarBody}>
                 <div className={navbarStyles.navbarTitle}>
-                    <h2>Product Management</h2>
+                <Link className={navbarStyles.navbarTitle} to={Routes.LANDINGROUTE} ><h2>Product Management</h2></Link>
                 </div>
                 <div className={navbarStyles.navbarList}>
                     {

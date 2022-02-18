@@ -2,6 +2,7 @@
     width: 100%;
 }
 .navbarTitle{
+    text-decoration: none;
     color: var(--color-lavender);
 }
 .navbarBody{

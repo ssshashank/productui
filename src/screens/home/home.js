@@ -13,7 +13,7 @@ const HomeScreen = () => {
     return (
         <div>
             <Navbar />
-            <div class={homeStyles.home} >
+            <div className={homeStyles.home} >
                 <h1>Manage your product</h1>
             </div>
         </div>

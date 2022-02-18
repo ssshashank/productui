@@ -2,6 +2,7 @@
     display: flex;
     width:50%;
     flex-direction: column;
+    background-color: rgb(93, 247, 183);
     animation: fadeIn 1s;
     -webkit-animation: fadeIn 1s;
     -moz-animation: fadeIn 1s;
