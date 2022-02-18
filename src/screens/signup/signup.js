@@ -41,23 +41,23 @@ const SignupScreen = () => {
                 "password":formValues.password
             }
             let response=await userAPI.signup(signupData)
-            response=response.data
-            if(response.message===200){
+            response=await response.data
+            if(response.message===201){
                 let user=new UserModel({
-                    "userId":response._id,
-                    "userName":response.userName,
-                    "email":response.email,
-                    "name":response.name,
-                    "contact":response.contact,
+                    "userId":response.data._id,
+                    "userName":response.data.userName,
+                    "email":response.data.email,
+                    "name":response.data.name,
+                    "contact":response.data.contact,
                     "currentStatus":AccountStatus.active,
-                    "token":response.token
+                    "token":response.data.token
                 })
                 userLocalData.setLocal({
                     "key":"USER",
                     "value":JSON.stringify(user)
                 })
                 navigateToHome()
-            }else if (response.message===404){
+            }else if (response.message===403){
                 alert(response.data)
             }
             

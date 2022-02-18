@@ -1,16 +1,15 @@
-import {
-    BrowserRouter as Router,
-    Switch,
-    Route,
-    withRouter
-
-} from "react-router-dom";
+import {  Redirect } from "react-router-dom";
 import Navbar from "../../components/navbar/navbar";
+import Routes from "../../constants/routes";
+import { userLocalData } from "../../utils/userUtils";
 import homeStyles from "./style.module.css";
 
 
 const HomeScreen = () => {
-
+    let isAuth=userLocalData.getLocal("USER")
+    if(!isAuth){
+        return <Redirect to={Routes.LANDINGROUTE}/>
+    }
     return (
         <div>
             <Navbar />
@@ -21,4 +20,4 @@ const HomeScreen = () => {
 
     );
 }
-export default withRouter(HomeScreen);
+export default HomeScreen

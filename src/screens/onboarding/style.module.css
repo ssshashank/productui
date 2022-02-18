@@ -19,6 +19,7 @@
 }
 
 .descriptionSectionHeader{
+    text-decoration: none;
     margin-left: 10%;
     font-size: var(--fontsize-pearl);
     margin-top: 5%;

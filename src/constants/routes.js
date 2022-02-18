@@ -18,7 +18,7 @@ export default class Routes{
 }
 
 export const navigateToComponent={
-    // [Routes.HOMEROUTE]:HomeScreen,
+    [Routes.HOMEROUTE]:HomeScreen,
     [Routes.ADDPRODUCTSROUTE]:null,
     [Routes.ALLPRODUCTSROUTE]:null,
     [Routes.LOGOUTROUTE]:LoginScreen
